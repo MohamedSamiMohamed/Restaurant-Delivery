@@ -17,6 +17,7 @@ class Motorcycle
 
 public:
 	Motorcycle();
+	Motorcycle(int, ORD_TYPE, int, REGION, STATUS);
 	virtual ~Motorcycle();
 	//--------------------------------------------------------------------------------------------//
 	ORD_TYPE GetType() const;

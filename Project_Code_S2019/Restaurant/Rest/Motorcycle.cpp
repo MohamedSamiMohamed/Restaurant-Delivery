@@ -5,6 +5,14 @@ Motorcycle::Motorcycle()
 {
 }
 
+Motorcycle::Motorcycle(int id, ORD_TYPE ord_T, int sp, REGION r, STATUS s=IDLE) {
+	ID = id;
+	setSpeed(sp);
+	setType(ord_T);
+	region = r;
+	status = s;
+}
+
 
 Motorcycle::~Motorcycle()
 {

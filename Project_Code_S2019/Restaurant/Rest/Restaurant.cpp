@@ -14,6 +14,10 @@ using namespace std;
 Restaurant::Restaurant() 
 {
 	pGUI = NULL;
+	region_A = new Region();
+	region_B = new Region();
+	region_C = new Region();
+	region_D = new Region();
 }
 
 void Restaurant::RunSimulation()
@@ -174,8 +178,8 @@ void Restaurant::file_loading(){
 	int id;
 	int dist;
 	int cost;
-	char regionch;
 	REGION region;
+	char regionch;
 	int ex_money;
 
 	int vip_speed;
@@ -198,101 +202,92 @@ void Restaurant::file_loading(){
 	inFile>>x;
 	frozen_speed=x;
 	inFile>>x;
+	int j = 0;
 	vip_speed=x;
+	Motorcycle * Mot;
 	for(int i=0;i<4;i++){
+		
+		
 		switch (i){
 		case 0:{
 			inFile >> x;
-			Motorcycle * Mot;
+			
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(normal_speed);
-				Mot->setType(TYPE_NRM);
-				normal_motor_A.enqueue(Mot,Mot->GetSpeed());
+
+				Mot = new Motorcycle(j,TYPE_NRM,normal_speed,A_REG,IDLE);
+				region_A->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(frozen_speed);
-				Mot->setType(TYPE_FROZ);
-				frozen_motor_A.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_FROZ,frozen_speed, A_REG, IDLE);
+				region_A->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(vip_speed);
-				Mot->setType(TYPE_VIP);
-				vip_motor_A.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, A_REG, IDLE);
+				region_A->AddMotorcycle(Mot);
+				j++;
 			}
 			   }break;
 		case 1:{
 			inFile >> x;
-			Motorcycle * Mot;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(normal_speed);
-				Mot->setType(TYPE_NRM);
-				normal_motor_B.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_NRM, normal_speed, B_REG, IDLE);
+				region_B->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(frozen_speed);
-				Mot->setType(TYPE_FROZ);
-				frozen_motor_B.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_FROZ, frozen_speed, B_REG, IDLE);
+				region_B->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(vip_speed);
-				Mot->setType(TYPE_VIP);
-				vip_motor_B.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, B_REG, IDLE);
+				region_B->AddMotorcycle(Mot);
+				j++;
 			}
 			   }break;
 		case 2:{inFile >> x;
-			Motorcycle * Mot;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(normal_speed);
-				Mot->setType(TYPE_NRM);
-				normal_motor_C.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_NRM, normal_speed, C_REG, IDLE);
+				region_C->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(frozen_speed);
-				Mot->setType(TYPE_FROZ);
-				frozen_motor_C.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_FROZ, frozen_speed, C_REG, IDLE);
+				region_C->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(vip_speed);
-				Mot->setType(TYPE_VIP);
-				vip_motor_C.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, C_REG, IDLE);
+				region_C->AddMotorcycle(Mot);
+				j++;
 			}
 			}break;
 		case 3:{inFile >> x;
-			Motorcycle * Mot;
+
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(normal_speed);
-				Mot->setType(TYPE_NRM);
-				normal_motor_D.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_NRM, normal_speed, D_REG, IDLE);
+				region_D->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(frozen_speed);
-				Mot->setType(TYPE_FROZ);
-				frozen_motor_D.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_FROZ, frozen_speed, D_REG, IDLE);
+				region_D->AddMotorcycle(Mot);
+				j++;
 			}
 			inFile >> x;
 			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle();
-				Mot->setSpeed(vip_speed);
-				Mot->setType(TYPE_VIP);
-				vip_motor_D.enqueue(Mot, Mot->GetSpeed());
+				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, D_REG, IDLE);
+				region_D->AddMotorcycle(Mot);
+				j++;
 			}
 			}break;
 		}
