@@ -12,10 +12,17 @@ class Motorcycle
 	int speed;		//meters it can move in one clock tick (in one timestep)
 	REGION	region;	//region of the motorcycle
 	STATUS	status;	//idle or in-service
+	//---------------------------------------------------------------------------------------------//
+	int ServingReturnTimeStep;//Time Step it returns from serving an order(FT+ST of an order)
 
 public:
 	Motorcycle();
 	virtual ~Motorcycle();
+	//--------------------------------------------------------------------------------------------//
+	ORD_TYPE GetType() const;
+	int GetSpeed() const;
+	void setSpeed(int speed_fn);
+	void setType(ORD_TYPE type_fn);
 };
 
 #endif

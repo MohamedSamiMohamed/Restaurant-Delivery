@@ -5,10 +5,13 @@
 int main()
 {
 	
-	Restaurant* pRest = new Restaurant;
+/*	Restaurant* pRest = new Restaurant;
 	pRest->RunSimulation();
 	
-	delete pRest;
+	delete pRest;*/
 	
+	Restaurant*ptr=new Restaurant;
+	ptr->file_loading();
+
 	return 0;
 }

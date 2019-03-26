@@ -21,13 +21,15 @@ protected:
 	// TODO: Add More Data Members As Needed
 	//
 
+	int Priority;
+
 public:
 	Order(int ID, ORD_TYPE r_Type, REGION r_region);
 	virtual ~Order();
 
 	int GetID();
 
-	int GetType() const;
+	ORD_TYPE GetType() const;
 	REGION GetRegion() const;
 
 	void SetDistance(int d);
@@ -36,6 +38,9 @@ public:
 	//
 	// TODO: Add More Member Functions As Needed
 	//
+
+	void SetPriority(int Pr);
+	int GetPriority() const;
 
 };
 

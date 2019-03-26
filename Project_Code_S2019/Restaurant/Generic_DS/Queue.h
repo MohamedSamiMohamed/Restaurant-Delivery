@@ -56,7 +56,8 @@ public :
 	bool isEmpty() const ;
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);  
-	bool peekFront(T& frntEntry)  const;	
+	bool peekFront(T& frntEntry)  const;
+	int GetCount() const;
 	~Queue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -165,6 +166,19 @@ bool Queue<T>:: peekFront(T& frntEntry) const
 	frntEntry = frontPtr->getItem();
 	return true;
 
+}
+////////////////////////////////////////////////////////////////////////////////////
+template<typename T>
+inline int Queue<T>::GetCount() const
+{
+	int Count = 0;
+	Node<T>* Scn = frontPtr;
+	while (Scn)
+	{
+		Count++;
+		Scn = Scn->getNext();
+	}
+	return Count;
 }
 ///////////////////////////////////////////////////////////////////////////////////
 
