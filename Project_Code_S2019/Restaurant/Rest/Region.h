@@ -32,6 +32,19 @@ public:
 	void AddActiveOrdersToDraw(GUI* pGUI);
 	//Cancels a normal order in the normal List
 	//Fuctions to get the first order and motorcycle if available to assign them
+	// Returns true if the list is empty 
+	bool IsNormalEmpty() const;
+	bool IsVIPEmpty() const;
+	bool IsFrozenEmpty() const;
+
+	//Assign orders :Returns the first order to be assigned in a list
+	void AssignNormal(Order* &Ord);
+	void AssignVIP(Order* &Ord);
+	void AssignFroz(Order* &Ord);
+
+	//Function to show if there are any active orders in cuurent region
+	//True if there are any waiting orders
+	bool IsRegionActive() const;
 
 
 	~Region();

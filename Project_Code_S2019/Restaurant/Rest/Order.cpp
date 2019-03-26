@@ -9,6 +9,23 @@ Order::Order(int id, ORD_TYPE r_Type, REGION r_region)
 	Priority = -1; //-1 till assigned for VIP orders
 }
 
+Order::Order(int iD, ORD_TYPE r_Type, REGION r_region, int dist, double mon, int arrT)
+{
+	ID = iD;
+	type = r_Type;
+	Region = r_region;
+	Distance = dist;
+	totalMoney = mon;
+	ArrTime = arrT;
+	if (type == TYPE_VIP) {
+		Priority = totalMoney * Distance *ArrTime;//temporary
+	
+	}
+	else {
+		Priority = -1;
+	}
+}
+
 Order::~Order()
 {
 }

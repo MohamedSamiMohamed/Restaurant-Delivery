@@ -14,10 +14,9 @@ using namespace std;
 Restaurant::Restaurant() 
 {
 	pGUI = NULL;
-	region_A = new Region();
-	region_B = new Region();
-	region_C = new Region();
-	region_D = new Region();
+	for (int i = 0; i < NumberOfRegions; i++) {
+		regions[i] = new Region();
+	}
 }
 
 void Restaurant::RunSimulation()
@@ -177,7 +176,7 @@ void Restaurant::file_loading(){
 	ORD_TYPE type; //casting typech to type enum
 	int id;
 	int dist;
-	int cost;
+	double cost;
 	REGION region;
 	char regionch;
 	int ex_money;
@@ -205,91 +204,26 @@ void Restaurant::file_loading(){
 	int j = 0;
 	vip_speed=x;
 	Motorcycle * Mot;
-	for(int i=0;i<4;i++){
-		
-		
-		switch (i){
-		case 0:{
-			inFile >> x;
-			
-			for (int i = 0; i < x; i++) {
+	//////////////////
+	for (int k = 0; k< NumberOfRegions; k++) {
+		inFile >> x;
+		for (int i = 0; i < x; i++) {
 
-				Mot = new Motorcycle(j,TYPE_NRM,normal_speed,A_REG,IDLE);
-				region_A->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_FROZ,frozen_speed, A_REG, IDLE);
-				region_A->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, A_REG, IDLE);
-				region_A->AddMotorcycle(Mot);
-				j++;
-			}
-			   }break;
-		case 1:{
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_NRM, normal_speed, B_REG, IDLE);
-				region_B->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_FROZ, frozen_speed, B_REG, IDLE);
-				region_B->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, B_REG, IDLE);
-				region_B->AddMotorcycle(Mot);
-				j++;
-			}
-			   }break;
-		case 2:{inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_NRM, normal_speed, C_REG, IDLE);
-				region_C->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_FROZ, frozen_speed, C_REG, IDLE);
-				region_C->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, C_REG, IDLE);
-				region_C->AddMotorcycle(Mot);
-				j++;
-			}
-			}break;
-		case 3:{inFile >> x;
-
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_NRM, normal_speed, D_REG, IDLE);
-				region_D->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_FROZ, frozen_speed, D_REG, IDLE);
-				region_D->AddMotorcycle(Mot);
-				j++;
-			}
-			inFile >> x;
-			for (int i = 0; i < x; i++) {
-				Mot = new Motorcycle(j, TYPE_VIP, vip_speed, D_REG, IDLE);
-				region_D->AddMotorcycle(Mot);
-				j++;
-			}
-			}break;
+			Mot = new Motorcycle(j, TYPE_NRM, normal_speed, (REGION)k, IDLE);
+			regions[k]->AddMotorcycle(Mot);
+			j++;
+		}
+		inFile >> x;
+		for (int i = 0; i < x; i++) {
+			Mot = new Motorcycle(j, TYPE_FROZ, frozen_speed, (REGION)k, IDLE);
+			regions[k]->AddMotorcycle(Mot);
+			j++;
+		}
+		inFile >> x;
+		for (int i = 0; i < x; i++) {
+			Mot = new Motorcycle(j, TYPE_VIP, vip_speed,(REGION) k, IDLE);
+			regions[k]->AddMotorcycle(Mot);
+			j++;
 		}
 	}
 	inFile>>x;
@@ -299,9 +233,7 @@ void Restaurant::file_loading(){
 
 	for(int i=0;i<event_count;i++){
 		inFile>>ch;
-	
 		if(ch=='R'){
-		
 		inFile>>time_step;
 		inFile>>typech;
 
@@ -339,9 +271,8 @@ void Restaurant::file_loading(){
 			break;
 		}
 
-			Event*pEv=new ArrivalEvent(time_step,id,type,region);  //casting enums for region and order typech
+			Event*pEv=new ArrivalEvent(time_step,id,type,dist,cost,region);  //casting enums for region and order typech
 			AddEvent(pEv);
-		
 		}
 
 		else if(ch=='X'){
@@ -367,5 +298,34 @@ void Restaurant::file_loading(){
 
 
 }
+
+void Restaurant::DelFirst()
+{
+	for (int k = 0; k < REG_CNT; k++)
+	{
+		Order* Ord;
+		if (!(regions[k]->IsNormalEmpty()))
+		{
+			regions[k]->AssignNormal(Ord);
+			delete Ord;
+		}
+		if (!(regions[k]->IsFrozenEmpty()))
+		{
+			regions[k]->AssignFroz(Ord);
+			delete Ord;
+		}
+		if (!(regions[k]->IsVIPEmpty()))
+		{
+			regions[k]->AssignVIP(Ord);
+			delete Ord;
+		}
+	}
+}
+
+Region * Restaurant::get_region(REGION R)
+{
+	return regions[R];
+}
+
 
 /// ==> end of DEMO-related function

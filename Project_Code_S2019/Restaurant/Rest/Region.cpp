@@ -102,7 +102,40 @@ void Region::AddActiveOrdersToDraw(GUI * pGUI)
 		pGUI->AddOrderForDrawing(ord);
 	}
 }
+//////////////////////////////////////////////////////////////////////////////////////
+bool Region::IsNormalEmpty() const
+{
+	bool Empty = normal_order.isEmpty();
+	return Empty;
+}
+bool Region::IsVIPEmpty() const
+{
+	return vip_order.isEmpty();
+}
+bool Region::IsFrozenEmpty() const
+{
+	return frozen_order.isEmpty();
+}
+////////////////////////////////////////////////////////////////////////////////////
+void Region::AssignNormal(Order * &Ord)
+{
+	normal_order.RemoveBeg(Ord);
+}
+void Region::AssignVIP(Order *& Ord)
+{
+	vip_order.dequeue(Ord);
+}
+void Region::AssignFroz(Order * &Ord)
+{
+	frozen_order.dequeue(Ord);
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+bool Region::IsRegionActive() const
+{
+	bool Active = !(vip_order.isEmpty()) || !(frozen_order.isEmpty()) || !(normal_order.isEmpty());
+	return Active;
+}
 
 Region::~Region()
 {
