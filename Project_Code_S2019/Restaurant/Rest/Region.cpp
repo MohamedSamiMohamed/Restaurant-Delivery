@@ -129,22 +129,48 @@ void Region::AssignFroz(Order * &Ord)
 {
 	frozen_order.dequeue(Ord);
 }
-void Region::getCounts(int &vipM_count, int & nM_count, int & fM_count, int & vipO_count, int & nO_count, int & fO_count)
-{
-	vipM_count	= vip_motor.get_item_count();
-	nM_count	= normal_motor.get_item_count();
-	fM_count	= frozen_motor.get_item_count();
-
-	vipO_count	= vip_order.get_item_count();
-	nO_count	= normal_order.GetCount();
-	fO_count	= frozen_order.GetCount();
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool Region::IsRegionActive() const
 {
 	bool Active = !(vip_order.isEmpty()) || !(frozen_order.isEmpty()) || !(normal_order.isEmpty());
 	return Active;
+}
+
+void Region::print(GUI * pGUI,int i)
+{
+	string outputs;
+
+	
+	char temp[10];
+
+	outputs = (char)(i + 65); //ASCI code for 'A' is 65 in DEC
+	outputs += " ";
+
+	itoa(vip_motor.get_item_count(), temp, 10);
+	outputs += " vipM: ";
+	outputs = outputs + temp;
+
+	outputs += " NoM: ";
+	itoa(normal_motor.get_item_count(), temp, 10);
+	outputs = outputs + temp;
+
+	outputs += " fM: ";
+	itoa(frozen_motor.get_item_count(), temp, 10);
+	outputs = outputs + temp;
+
+	outputs += " vipOrd: ";
+	itoa(vip_order.get_item_count(), temp, 10);
+	outputs = outputs + temp;
+
+	outputs += " NoOrd: ";
+	itoa(normal_order.GetCount(), temp, 10);
+	outputs = outputs + temp;
+
+	outputs += " fOrd: ";
+	itoa(frozen_order.GetCount(), temp, 10);
+	outputs = outputs + temp;
+
+	pGUI->printMessageAt(outputs, i + 1);
 }
 
 Region::~Region()

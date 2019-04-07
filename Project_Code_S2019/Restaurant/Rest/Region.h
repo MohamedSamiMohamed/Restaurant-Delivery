@@ -9,6 +9,7 @@
 
 #include "../Rest/Order.h"
 #include "../Rest/Motorcycle.h"
+#include "../Defs.h"
 
 class Region
 {
@@ -41,13 +42,12 @@ public:
 	void AssignNormal(Order* &Ord);
 	void AssignVIP(Order* &Ord);
 	void AssignFroz(Order* &Ord);
-	void getCounts(int &, int &, int &, int &, int &,int & );
 
 	//Function to show if there are any active orders in cuurent region
 	//True if there are any waiting orders
 	bool IsRegionActive() const;
-
-
+	void print(GUI * pGUI, int i);
+	
 	~Region();
 };
 

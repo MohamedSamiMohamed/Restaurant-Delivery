@@ -15,7 +15,6 @@
 #include"..\Events\cancelationEvent.h"
 #include"..\Events\promotionEvent.h"
 
-#define NumberOfRegions 4
 // it is the maestro of the project
 class Restaurant  
 {	

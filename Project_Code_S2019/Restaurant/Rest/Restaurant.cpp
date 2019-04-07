@@ -14,7 +14,7 @@ using namespace std;
 Restaurant::Restaurant() 
 {
 	pGUI = NULL;
-	for (int i = 0; i < NumberOfRegions; i++) {
+	for (int i = 0; i < REG_CNT; i++) {
 		regions[i] = new Region();
 	}
 }
@@ -206,7 +206,7 @@ void Restaurant::file_loading(){
 	vip_speed=x;
 	Motorcycle * Mot;
 	//////////////////
-	for (int k = 0; k< NumberOfRegions; k++) {
+	for (int k = 0; k< REG_CNT; k++) {
 		inFile >> x;
 		for (int i = 0; i < x; i++) {
 
@@ -337,96 +337,28 @@ void Restaurant::Phase1Sim()
 	//Enter simulation loop
 	bool Continue = true;
 
-	string outputs[NumberOfRegions];
-	int vipM_count, nM_count, fM_count, vipO_count,  nO_count, fO_count;
+	//timerstep = 0 at the beginning
 	pGUI->PrintMessage("0");
-	for (int i = 0; i < NumberOfRegions; i++)
-	{ 
-		regions[i]->getCounts(vipM_count, nM_count, fM_count, vipO_count, nO_count, fO_count);
-		char temp[10];
 
-		itoa(vipM_count,temp,10);
-		outputs[i] = "vipM: ";
-		outputs[i] = outputs[i] + temp;
-		pGUI->printMessageAt(outputs[i], i + 1);
-	
-		outputs[i] += " NoM: ";
-		itoa(nM_count, temp, 10);
-		outputs[i] = outputs[i] + temp;
-		
-		outputs[i] += " fM: ";
-		itoa(fM_count, temp, 10);
-		outputs[i] = outputs[i] + temp;
-		
-		outputs[i] += " vipOrd: ";
-		itoa(vipO_count, temp, 10);
-		outputs[i] = outputs[i] + temp;
+	//print
+	for (int i = 0; i < REG_CNT; i++)
+		regions[i]->print(pGUI,i);
 
-		outputs[i] += " NoOrd: ";
-		itoa(nO_count, temp, 10);
-		outputs[i] = outputs[i] + temp;
-
-		outputs[i] += " fOrd: ";
-		itoa(fO_count, temp, 10);
-		outputs[i] = outputs[i] + temp;
-
-		pGUI->printMessageAt(outputs[i], i + 1);
-	}
 	while (Continue)
 	{
 		//To Print Time Step 
 		char timestep[10];
 		itoa(CurrentTimeStep, timestep, 10);
 		
-		/////////////////////////////////////////////////////////////////////
-		/*for (int i = 0; i < NumberOfRegions; i++) {
-			pGUI->printMessageAt(outputs[i], i + 1);
-		}
-*/
 		pGUI->PrintMessage(timestep);
-
-		/*for(int i =0; i< NumberOfRegions;i++)
-		pGUI->printMessageAt(outputs[i], i+1);
-		*/
-		/////////////////////////////////////////////////////////////////////
+		
 		//Execute Events in current time step
 		ExecuteEvents(CurrentTimeStep);
 
-		///////////////////////////////////////////////////////////lol
-
-		for (int i = 0; i < NumberOfRegions; i++)
-		{
-			regions[i]->getCounts(vipM_count, nM_count, fM_count, vipO_count, nO_count, fO_count);
-			char temp[10];
-
-			itoa(vipM_count, temp, 10);
-			outputs[i] = "vipM: ";
-			outputs[i] = outputs[i] + temp;
-			pGUI->printMessageAt(outputs[i], i + 1);
-
-			outputs[i] += " NoM: ";
-			itoa(nM_count, temp, 10);
-			outputs[i] = outputs[i] + temp;
-
-			outputs[i] += " fM: ";
-			itoa(fM_count, temp, 10);
-			outputs[i] = outputs[i] + temp;
-
-			outputs[i] += " vipOrd: ";
-			itoa(vipO_count, temp, 10);
-			outputs[i] = outputs[i] + temp;
-
-			outputs[i] += " NoOrd: ";
-			itoa(nO_count, temp, 10);
-			outputs[i] = outputs[i] + temp;
-
-			outputs[i] += " fOrd: ";
-			itoa(fO_count, temp, 10);
-			outputs[i] = outputs[i] + temp;
-
-			pGUI->printMessageAt(outputs[i], i + 1);
-		}
-		///////////////////////////////////////////////////////////lol
+		//print the output
+		for (int i = 0; i < REG_CNT; i++)
+			regions[i]->print(pGUI,i);
+		
 		pGUI->ResetDrawingList();
 		for (int i = 0; i < REG_CNT; i++)
 		{
