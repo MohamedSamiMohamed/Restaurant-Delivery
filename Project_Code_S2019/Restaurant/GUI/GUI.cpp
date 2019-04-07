@@ -250,3 +250,10 @@ PROG_MODE	GUI::getGUIMode() const
 	
 	return Mode;
 }
+void GUI::printMessageAt(string msg, int line) const
+{
+
+	pWind->SetPen(DARKRED);
+	pWind->SetFont(18, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(10, WindHeight - (int)(StatusBarHeight / (1.5)) + (15 * line), msg); // You may need to change these coordinates later 
+}

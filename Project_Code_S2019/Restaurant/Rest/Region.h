@@ -41,6 +41,7 @@ public:
 	void AssignNormal(Order* &Ord);
 	void AssignVIP(Order* &Ord);
 	void AssignFroz(Order* &Ord);
+	void getCounts(int &, int &, int &, int &, int &,int & );
 
 	//Function to show if there are any active orders in cuurent region
 	//True if there are any waiting orders

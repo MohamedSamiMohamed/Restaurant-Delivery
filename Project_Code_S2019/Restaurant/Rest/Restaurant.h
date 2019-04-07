@@ -26,7 +26,7 @@ private:
 	Queue<Event*> EventsQueue;	//Queue of all events that will be loaded from file
 	
 	//new method
-	Region* regions[NumberOfRegions];
+	Region* regions[REG_CNT];
 
 	//---------------------------------------------------------------------------------------------------//
 	//Serving Motorcycles
@@ -67,6 +67,9 @@ public:
 	//[MA]Simulation Auxilary functions
 	void DelFirst();
 	Region* get_region(REGION R);
+	//phase 1 Simulation Function
+	void Phase1Sim();
+
 	
 };
 

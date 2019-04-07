@@ -27,6 +27,7 @@ void Restaurant::RunSimulation()
 	switch (mode)	//Add a function for each mode in next phases
 	{
 	case MODE_INTR:
+		Phase1Sim();
 		break;
 	case MODE_STEP:
 		break;
@@ -325,6 +326,132 @@ void Restaurant::DelFirst()
 Region * Restaurant::get_region(REGION R)
 {
 	return regions[R];
+}
+
+void Restaurant::Phase1Sim()
+{
+	//initializations
+	int CurrentTimeStep = 1;
+	//call file loading function to fill events nad motorcycles
+	file_loading();
+	//Enter simulation loop
+	bool Continue = true;
+
+	string outputs[NumberOfRegions];
+	int vipM_count, nM_count, fM_count, vipO_count,  nO_count, fO_count;
+	pGUI->PrintMessage("0");
+	for (int i = 0; i < NumberOfRegions; i++)
+	{ 
+		regions[i]->getCounts(vipM_count, nM_count, fM_count, vipO_count, nO_count, fO_count);
+		char temp[10];
+
+		itoa(vipM_count,temp,10);
+		outputs[i] = "vipM: ";
+		outputs[i] = outputs[i] + temp;
+		pGUI->printMessageAt(outputs[i], i + 1);
+	
+		outputs[i] += " NoM: ";
+		itoa(nM_count, temp, 10);
+		outputs[i] = outputs[i] + temp;
+		
+		outputs[i] += " fM: ";
+		itoa(fM_count, temp, 10);
+		outputs[i] = outputs[i] + temp;
+		
+		outputs[i] += " vipOrd: ";
+		itoa(vipO_count, temp, 10);
+		outputs[i] = outputs[i] + temp;
+
+		outputs[i] += " NoOrd: ";
+		itoa(nO_count, temp, 10);
+		outputs[i] = outputs[i] + temp;
+
+		outputs[i] += " fOrd: ";
+		itoa(fO_count, temp, 10);
+		outputs[i] = outputs[i] + temp;
+
+		pGUI->printMessageAt(outputs[i], i + 1);
+	}
+	while (Continue)
+	{
+		//To Print Time Step 
+		char timestep[10];
+		itoa(CurrentTimeStep, timestep, 10);
+		
+		/////////////////////////////////////////////////////////////////////
+		/*for (int i = 0; i < NumberOfRegions; i++) {
+			pGUI->printMessageAt(outputs[i], i + 1);
+		}
+*/
+		pGUI->PrintMessage(timestep);
+
+		/*for(int i =0; i< NumberOfRegions;i++)
+		pGUI->printMessageAt(outputs[i], i+1);
+		*/
+		/////////////////////////////////////////////////////////////////////
+		//Execute Events in current time step
+		ExecuteEvents(CurrentTimeStep);
+
+		///////////////////////////////////////////////////////////lol
+
+		for (int i = 0; i < NumberOfRegions; i++)
+		{
+			regions[i]->getCounts(vipM_count, nM_count, fM_count, vipO_count, nO_count, fO_count);
+			char temp[10];
+
+			itoa(vipM_count, temp, 10);
+			outputs[i] = "vipM: ";
+			outputs[i] = outputs[i] + temp;
+			pGUI->printMessageAt(outputs[i], i + 1);
+
+			outputs[i] += " NoM: ";
+			itoa(nM_count, temp, 10);
+			outputs[i] = outputs[i] + temp;
+
+			outputs[i] += " fM: ";
+			itoa(fM_count, temp, 10);
+			outputs[i] = outputs[i] + temp;
+
+			outputs[i] += " vipOrd: ";
+			itoa(vipO_count, temp, 10);
+			outputs[i] = outputs[i] + temp;
+
+			outputs[i] += " NoOrd: ";
+			itoa(nO_count, temp, 10);
+			outputs[i] = outputs[i] + temp;
+
+			outputs[i] += " fOrd: ";
+			itoa(fO_count, temp, 10);
+			outputs[i] = outputs[i] + temp;
+
+			pGUI->printMessageAt(outputs[i], i + 1);
+		}
+		///////////////////////////////////////////////////////////lol
+		pGUI->ResetDrawingList();
+		for (int i = 0; i < REG_CNT; i++)
+		{
+			regions[i]->AddActiveOrdersToDraw(pGUI);
+		}
+		pGUI->UpdateInterface();
+		pGUI->waitForClick();
+
+		DelFirst();
+		//Draw After Deleting
+		pGUI->ResetDrawingList();
+		for (int i = 0; i < REG_CNT; i++)
+		{
+			regions[i]->AddActiveOrdersToDraw(pGUI);
+		}
+		pGUI->UpdateInterface();
+		pGUI->waitForClick();
+
+		//To continue if there is any event or any active order in any of the regions
+		Continue = !(EventsQueue.isEmpty()) || regions[A_REG]->IsRegionActive() || regions[B_REG]->IsRegionActive() || regions[C_REG]->IsRegionActive() || regions[D_REG]->IsRegionActive();
+		CurrentTimeStep++;
+	}
+
+	pGUI->PrintMessage("------ End of Simulation ------");
+	pGUI->waitForClick();
 }
 
 

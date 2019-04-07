@@ -129,6 +129,16 @@ void Region::AssignFroz(Order * &Ord)
 {
 	frozen_order.dequeue(Ord);
 }
+void Region::getCounts(int &vipM_count, int & nM_count, int & fM_count, int & vipO_count, int & nO_count, int & fO_count)
+{
+	vipM_count	= vip_motor.get_item_count();
+	nM_count	= normal_motor.get_item_count();
+	fM_count	= frozen_motor.get_item_count();
+
+	vipO_count	= vip_order.get_item_count();
+	nO_count	= normal_order.GetCount();
+	fO_count	= frozen_order.GetCount();
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 bool Region::IsRegionActive() const
