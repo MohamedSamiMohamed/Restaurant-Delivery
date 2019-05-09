@@ -1,0 +1,80 @@
+FT   ID   AT   WT   ST   
+5    23   3    0    2    
+5    18   2    0    3    
+5    17   1    0    4    
+6    22   2    0    4    
+7    27   3    0    4    
+7    28   3    0    4    
+7    20   2    0    5    
+8    30   7    0    1    
+10   20   5    0    5    
+10   24   3    0    7    
+11   10   1    0    10   
+11   14   1    0    10   
+12   7    1    8    3    
+13   23   6    5    2    
+13   21   6    0    7    
+14   3    1    0    13   
+15   42   12   0    3    
+16   26   3    0    13   
+16   1    1    0    15   
+17   21   2    0    15   
+17   15   1    0    16   
+18   39   8    0    10   
+18   40   8    0    10   
+19   22   6    9    4    
+19   25   3    0    16   
+20   6    1    14   5    
+22   32   7    10   5    
+22   44   12   0    10   
+23   36   8    7    8    
+24   24   6    5    13   
+28   5    1    20   7    
+29   11   1    24   4    
+31   4    1    20   10   
+31   41   8    0    23   
+34   25   6    0    28   
+35   8    1    26   8    
+40   26   7    28   5    
+41   9    1    32   8    
+46   19   2    29   15   
+49   33   7    34   8    
+49   34   7    28   14   
+52   29   7    38   7    
+55   35   8    41   6    
+55   31   7    36   12   
+66   27   7    52   7    
+70   16   1    56   13   
+72   37   8    54   10   
+82   28   7    66   9    
+96   38   8    75   13   
+
+Region A:
+	Orders: 22[Norm:1, Froz:6, VIP:15] 
+	MotorC: 5[Norm:2, Froz2, VIP:1 ]
+	Avg Wait = 27.2273 , Avg Serv = 8.72727
+	Money: 4461[Norm:1685, Froz:771, VIP:2005] 
+
+Region B:
+	Orders: 8[Norm:4, Froz:3, VIP:1] 
+	MotorC: 6[Norm:2, Froz2, VIP:2 ]
+	Avg Wait = 1.25 , Avg Serv = 6.5
+	Money: 2116[Norm:360, Froz:626, VIP:1130] 
+
+Region C:
+	Orders: 12[Norm:0, Froz:3, VIP:9] 
+	MotorC: 6[Norm:2, Froz2, VIP:2 ]
+	Avg Wait = 9 , Avg Serv = 9.58333
+	Money: 4930[Norm:110, Froz:250, VIP:4570] 
+
+Region D:
+	Orders: 7[Norm:3, Froz:2, VIP:2] 
+	MotorC: 6[Norm:2, Froz2, VIP:2 ]
+	Avg Wait = 0 , Avg Serv = 10.7143
+	Money: 870[Norm:310, Froz:240, VIP:320] 
+
+Resturant : 
+	Orders : 49[Norm: 8, Froz: 14, VIP:27] 
+	MotorC: 23[Norm: 8 Froz: 8, Vip: 7] 
+	Avg Wait = 14.6327, Avg Serv = 8.85714
+	Money : 12377[Norm: 2465, Froz: 1887, VIP:8025] 

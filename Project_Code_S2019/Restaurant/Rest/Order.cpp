@@ -18,7 +18,7 @@ Order::Order(int iD, ORD_TYPE r_Type, REGION r_region, int dist, double mon, int
 	totalMoney = mon;
 	ArrTime = arrT;
 	if (type == TYPE_VIP) {
-		Priority = totalMoney * Distance *ArrTime;//temporary
+		Priority = 5 * totalMoney - (20*Distance *ArrTime);//temporary
 	
 	}
 	else {
@@ -64,4 +64,62 @@ void Order ::  SetPriority(int Pr)
 int Order ::  GetPriority() const
 {
 	return Priority;
+}
+
+void Order::SetAT(int arrT)
+{
+	ArrTime = arrT;
+}
+
+void Order::SetST(int servT)
+{
+	ServTime = servT;
+}
+
+void Order::SetFT(int finT)
+{
+	FinishTime = finT;
+}
+
+void Order::SetWT(int waitT)
+{
+	WaitingTime = waitT;
+}
+
+int Order::GetAT() const
+{
+	return ArrTime;
+}
+
+int Order::GetST() const
+{
+	return ServTime;
+}
+
+int Order::GetFT() const
+{
+	return FinishTime;
+}
+
+int Order::GetWT() const
+{
+	return WaitingTime;
+}
+
+double Order::get_total_money(){
+	return totalMoney;
+
+}
+
+int Order::get_arrival_time(){
+	return ArrTime;
+}
+
+void Order::set_type(ORD_TYPE ord_type){
+	type=ord_type;
+
+}
+
+void Order::SetMoney(double mon){
+	totalMoney= mon;
 }

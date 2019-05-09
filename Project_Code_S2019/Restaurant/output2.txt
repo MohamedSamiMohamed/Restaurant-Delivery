@@ -1,0 +1,71 @@
+FT   ID   AT   WT   ST   
+3    17   1    0    2    
+3    38   1    0    2    
+4    19   1    0    3    
+4    40   1    0    3    
+5    21   1    0    4    
+5    7    1    0    4    
+5    8    1    0    4    
+6    42   1    0    5    
+6    15   1    0    5    
+6    28   1    0    5    
+6    36   1    0    5    
+6    18   1    0    5    
+6    39   1    0    5    
+8    1    1    4    3    
+8    9    1    4    3    
+8    20   1    0    7    
+8    41   1    0    7    
+8    16   1    0    7    
+8    29   1    0    7    
+8    37   1    0    7    
+9    10   1    6    2    
+11   11   1    8    2    
+11   4    1    0    10   
+12   22   1    8    3    
+13   23   1    10   2    
+13   24   1    10   2    
+13   31   1    10   2    
+14   30   1    10   3    
+14   32   1    10   3    
+16   6    1    8    7    
+19   5    1    6    12   
+25   12   1    14   10   
+28   14   1    14   13   
+31   25   1    20   10   
+35   26   1    22   12   
+38   27   1    30   7    
+38   13   1    14   23   
+45   33   1    34   10   
+54   35   1    40   13   
+64   34   1    40   23   
+
+Region A:
+	Orders: 40[Norm:10, Froz:12, VIP:18] 
+	MotorC: 19[Norm:10, Froz6, VIP:3 ]
+	Avg Wait = 8.05 , Avg Serv = 6.55
+	Money: 10304[Norm:1120, Froz:2144, VIP:7040] 
+
+Region B:
+	Orders: 0[Norm:0, Froz:0, VIP:0] 
+	MotorC: 23[Norm:13, Froz7, VIP:3 ]
+	Avg Wait = this region hasn't any orders , Avg Serv = this region hasn't any orders
+	Money: 0[Norm:0, Froz:0, VIP:0] 
+
+Region C:
+	Orders: 0[Norm:0, Froz:0, VIP:0] 
+	MotorC: 19[Norm:12, Froz4, VIP:3 ]
+	Avg Wait = this region hasn't any orders , Avg Serv = this region hasn't any orders
+	Money: 0[Norm:0, Froz:0, VIP:0] 
+
+Region D:
+	Orders: 0[Norm:0, Froz:0, VIP:0] 
+	MotorC: 52[Norm:12, Froz16, VIP:24 ]
+	Avg Wait = this region hasn't any orders , Avg Serv = this region hasn't any orders
+	Money: 0[Norm:0, Froz:0, VIP:0] 
+
+Resturant : 
+	Orders : 40[Norm: 10, Froz: 12, VIP:18] 
+	MotorC: 113[Norm: 47 Froz: 33, Vip: 33] 
+	Avg Wait = 8.05, Avg Serv = 6.55
+	Money : 10304[Norm: 1120, Froz: 2144, VIP:7040] 

@@ -182,5 +182,7 @@ const color DARKMAGENTA = color(139, 0, 139);
 const color DARKRED = color(139, 0, 0);
 const color LIGHTGREEN = color(144, 238, 144);
 
-
+//[MA]
+const color CUSTOMBROWN = color(102,51,0);
+const color CUSLIGHTBROWN = color(255,153,51);
 #endif //COLOR_H

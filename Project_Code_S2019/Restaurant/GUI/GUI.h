@@ -80,6 +80,8 @@ private:
 	void DrawString(const int iX, const int iY, const string Text); // prints a message in the passed coordinates
 	void DrawRestArea() const;	    // draws the restaurant area
 
+	void DrawMenuBar() const;
+
 	void ClearStatusBar() const;    // clears the status bar
 	void ClearDrawingArea() const;	// clears the Drawing area from all drawings
 
@@ -93,7 +95,12 @@ public:
 
 	// Output Functions  ---------------------------
 	void PrintMessage(string msg) const; // prints a message in the status bar
-	void printMessageAt(string msg, int line) const;
+	void printMessageAt(string msg, int line) const; //Function to print multi line
+	void PrintMessageloc(string msg,int line) const;
+
+	//[MA] Custom Function to Print TimeStep
+	void PrintTimeStep(string msg) const;
+
 
 	void UpdateInterface();
 	void AddOrderForDrawing(Order* pOrd);	//Adds a new order to the drawing list

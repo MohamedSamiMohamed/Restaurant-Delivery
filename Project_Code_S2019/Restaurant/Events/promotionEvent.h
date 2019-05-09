@@ -1,5 +1,6 @@
 #pragma once
 #include "event.h"
+#include "../Rest/Restaurant.h"
 class promotionEvent :
 	public Event
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include "event.h"
+#include "../Rest/Restaurant.h"
 class cancelationEvent :public Event
 {
 public:

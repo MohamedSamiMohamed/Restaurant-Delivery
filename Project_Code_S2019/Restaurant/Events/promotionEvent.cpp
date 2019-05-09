@@ -13,5 +13,16 @@ promotionEvent::~promotionEvent(void)
 
 void promotionEvent::Execute(Restaurant* pRest){
 
-	 return;
+	bool found=false;
+	Region*pRegion;
+	for(int i=0;i<REG_CNT;i++){
+		if(!found){
+			pRegion=pRest->get_region((REGION)i);
+			found=pRegion->promoteOrder(OrderID,money);
+		}
+		else{
+		break;
+		}
+	
+	}
 }

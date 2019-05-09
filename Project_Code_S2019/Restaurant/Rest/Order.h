@@ -14,7 +14,7 @@ protected:
 	                
 	double totalMoney;	//Total order money
 
-	int ArrTime, ServTime, FinishTime;	//arrival, service start, and finish times
+	int ArrTime, ServTime, FinishTime, WaitingTime;	//arrival, service start, and finish times
 	
 	
 	//
@@ -42,6 +42,20 @@ public:
 
 	void SetPriority(int Pr);
 	int GetPriority() const;
+	//Setters and Getters for At,ST,FT
+	void SetAT(int arrT);
+	void SetST(int servT);
+	void SetFT(int finT);
+	void SetWT(int waitT);
+	void SetMoney(double money);
+	int GetAT() const;
+	int GetST() const;
+	int GetFT() const;
+	int GetWT() const;
+
+	double get_total_money();    //Ms
+	int get_arrival_time();      //MS
+	void set_type(ORD_TYPE);
 
 };
 

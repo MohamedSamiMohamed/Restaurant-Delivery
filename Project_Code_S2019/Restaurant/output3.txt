@@ -1,0 +1,67 @@
+FT   ID   AT   WT   ST   
+5    8    2    0    3    
+5    7    1    0    4    
+5    2    1    0    4    
+6    11   2    0    4    
+6    3    1    0    5    
+7    16   3    0    4    
+7    12   2    0    5    
+8    4    1    0    7    
+9    1    1    0    8    
+10   18   6    0    4    
+10   13   3    0    7    
+10   17   3    0    7    
+10   10   2    0    8    
+10   6    1    0    9    
+11   20   6    0    5    
+12   15   3    0    9    
+13   26   9    0    4    
+13   27   9    0    4    
+13   29   9    0    4    
+13   35   9    0    4    
+13   36   9    0    4    
+13   23   6    0    7    
+15   32   9    2    4    
+17   25   8    0    9    
+17   22   6    0    11   
+17   5    1    0    16   
+19   28   9    0    10   
+19   31   9    0    10   
+19   37   9    0    10   
+19   14   3    0    16   
+21   30   9    8    4    
+23   24   8    0    15   
+23   21   6    0    17   
+24   19   6    8    10   
+26   34   9    7    10   
+39   33   9    26   4    
+
+Region A:
+	Orders: 11[Norm:6, Froz:3, VIP:2] 
+	MotorC: 9[Norm:5, Froz3, VIP:1 ]
+	Avg Wait = 0 , Avg Serv = 7.18182
+	Money: 1853[Norm:516, Froz:487, VIP:850] 
+
+Region B:
+	Orders: 9[Norm:4, Froz:4, VIP:1] 
+	MotorC: 11[Norm:6, Froz3, VIP:2 ]
+	Avg Wait = 0.888889 , Avg Serv = 6.44444
+	Money: 1438[Norm:351, Froz:587, VIP:500] 
+
+Region C:
+	Orders: 11[Norm:1, Froz:2, VIP:8] 
+	MotorC: 7[Norm:4, Froz2, VIP:1 ]
+	Avg Wait = 3.90909 , Avg Serv = 8.36364
+	Money: 3822[Norm:71, Froz:191, VIP:3560] 
+
+Region D:
+	Orders: 5[Norm:1, Froz:2, VIP:2] 
+	MotorC: 15[Norm:9, Froz4, VIP:2 ]
+	Avg Wait = 0 , Avg Serv = 7.4
+	Money: 872[Norm:71, Froz:191, VIP:610] 
+
+Resturant : 
+	Orders : 36[Norm: 12, Froz: 11, VIP:13] 
+	MotorC: 42[Norm: 24 Froz: 12, Vip: 6] 
+	Avg Wait = 1.41667, Avg Serv = 7.38889
+	Money : 7985[Norm: 1009, Froz: 1456, VIP:5520] 

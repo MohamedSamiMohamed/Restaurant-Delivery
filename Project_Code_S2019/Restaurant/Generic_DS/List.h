@@ -97,7 +97,7 @@ inline bool List<T>::Remove(const T & item)
 		{
 			temp = ScnPtr->getNext();
 			ScnPtr->setNext(temp->getNext());
-			temp->setNext(NULL);
+			temp->setNext(nullptr);
 			delete temp;
 			Count--;
 			return true;
